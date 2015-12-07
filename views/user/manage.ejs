@@ -1,0 +1,13 @@
+<div class="container-fluid">
+	<div class="col-md-10 col-md-offset-1">
+		<table class="table">
+			<% staffs.forEach(function(model){%>
+			<tr>
+				<td><%=model.username%></td>
+				<td><a href="http://localhost:1337/user/edit/<%=model.id%>">Edit</a></td>
+				<td><a href="http://localhost:1337/user/delete/<%=model.id%>">Delete</a></td>
+			</tr>
+			<% });%>
+		</table>
+	</div>
+</div>

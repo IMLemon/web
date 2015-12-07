@@ -1,0 +1,12 @@
+<div class="container-fluid">
+	<div class="col-md-10 col-md-offset-1">
+		<h2>Registered Users</h2>
+		<table class="table">
+			<% persons.worksFor.forEach(function(model){%>
+			<tr>
+				<td><%=model.username%></td>
+			</tr>
+			<% });%>
+		</table>
+	</div>
+</div>

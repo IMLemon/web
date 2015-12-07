@@ -1,0 +1,33 @@
+<div class="container-fluid">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="panel panel-default">
+
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<%=person.name%>
+				</h3>
+			</div>
+			<form action="/user/addevent" method="POST" class="form-horizontal" role="form">
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-3 col-md-offset-1  col-sm-4  col-xs-10 col-xs-offset-2">
+							<image src="<%=person.image%>" class="img-thumbnail" style="height:355px;object-fit:cover" />
+							</div>
+							<div class="col-md-7 col-md-offset-1  col-sm-8 col-xs-12">
+								<%=person.fullDes%><br><br>
+								Organizer:<%=person.organizer%><br><br>
+								Date:<%=person.date%><br><br>
+								Time:<%=person.time%><br><br>
+								Venue:<%=person.venue%><br><br>
+								Quota:<%=person.quota%><br><br>
+								<%if(req.session.username != 'admin'&&req.session.userdept!="Staff"&&person.quota!="0"){%>
+								<button class="btn btn-default col-md-offset-3" type="submit" value="registerevent">Register</button>
+								<%}%>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

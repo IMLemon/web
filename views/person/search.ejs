@@ -1,0 +1,109 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-md-5 col-md-offset-1">
+      <div class="row">
+
+        <% persons.forEach( function(model) { %>
+        <div class="panel panel-default col-md-12" style="height:200px;">
+
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <a href="http://localhost:1337/person/eventdetails/<%=model.id%>"><%=model.name%></a>
+            </h3>
+          </div>
+
+          <div class="panel-body">
+
+            <div class="row">
+
+              <div class="col-md-3 col-md-offset-1 col-sm-2 col-sm-offset-1">
+               <a href="http://localhost:1337/person/eventdetails/<%=model.id%>">
+                <img src="<%=model.image%>" class="img-thumbnail" style="height:135px;object-fit:cover;"/>
+              </a>
+             </div>
+
+             <div class="col-md-7 col-md-offset-1  col-sm-8 col-sm-offset-1">
+              <p class="text-left" style="min-height:140px;max-height:140px;overflow:hidden;"><%=model.shortDes%></p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+      <% }); %>
+    </div>
+  </div>  
+
+  <div class="col-md-6">
+    <ul class="pagination">
+      <li>
+        <a href="/person/search/?page=<%=Math.max(current-1, 1)%>" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li>
+        <% for (i = 1; i <= count; i++) { %>
+        <a href="/person/search/?page=<%=i%>"> <%=i%> </a>
+        <%}%>
+      </li>
+      <li>
+        <a href="/person/search/?page=<%=Math.min(current*1+1, count)%>" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+    <div class="col-md-offset-1 col-sm-offset-1">
+      <h2>
+       Event Search form
+     </h2>
+   </div>
+   <form action="/person/search" method="POST" class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="col-md-3 col-sm-2 col-sm-offset-1 control-label">
+        Event name: 
+      </label>
+      <div class="col-md-7 col-sm-8">
+        <input type="text" class="form-control" name="Person[name]" />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3 col-sm-2 col-sm-offset-1 control-label">
+        Organizer: 
+      </label>
+      <div class="col-md-7 col-sm-8">
+        <select class="form-control" name="Person[organizer]">
+          <option>Music Society</option>
+          <option>gis</option>
+          <option>comp</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3 col-sm-2 col-sm-offset-1 control-label">
+        Date: 
+      </label>
+      <div class="col-md-7 col-sm-8">
+        <input type="date" class="form-control" name="Person[date]" placeholder="2015-11-18"/>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-3 col-sm-2 col-sm-offset-1 control-label">
+        Venue: 
+      </label>
+      <div class="col-md-7 col-sm-8">
+        <select class="form-control" name="Person[venue]">
+          <option>AC Hall</option>
+          <option>SWT501</option>
+          <option>RRS638</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-default col-md-offset-3 col-sm-offset-3" type="submit" value="SELECT">Submit</button>
+  </form>
+</div>
+</div>
+</div>
